@@ -102,6 +102,7 @@ body {
       justify-content: space-between;
       align-items: center;
       position: relative;
+      border-radius: 12px;
     }
     
     /* Nav links */
@@ -125,7 +126,6 @@ body {
       max-height: 0;
       transition: max-height 0.3s ease-in-out;
       border-radius: 12px;
-      cursor: pointer;
     }
 
     .nav-links a {
@@ -137,11 +137,14 @@ body {
     
     .nav-links li {
       padding: 10px;
-      cursor: pointer;
     }
 
     .nav-links a:hover {
-      color: #ffcc00;
+      background-color: #9b883f;
+      padding: 10px;
+      border-radius: 12px;
+      color: #ffffff;
+      transition: 0.8s;
     }
 
     /* Hamburger icon */
@@ -149,6 +152,7 @@ body {
       display: flex;
       flex-direction: column;
       cursor: pointer;
+
     }
 
     .hamburger span {
