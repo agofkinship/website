@@ -101,7 +101,10 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 3%;
+      z-index: 1000;
       border-radius: 12px;
     }
     
@@ -117,9 +120,9 @@ body {
       background-color: #222;
       position: absolute;
       top: 100%;
-      left: 50%;
+      left: 70%;
       transform: translateX(-50%);
-      width: 200px;
+      width: 100px;
       text-align: center;
       padding: 1rem 0;
       overflow: hidden;
