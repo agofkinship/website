@@ -7,8 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	const hamburger = document.querySelector(".hamburger");
 	const navLinks = document.querySelector(".nav-links");
 
-	hamburger.addEventListener("click", () => {
+	hamburger.addEventListener("click", (e) => {
 		navLinks.classList.toggle("active");
+		e.stopPropagation(); // prevents menu from randomly closing
+	});
+
+	// close menu when clicking off menu
+	document.addEventListener("click", (e) => {
+		if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+			navLinks.classList.remove("active");
+		}
 	});
 
 	// back to top button
