@@ -11,22 +11,7 @@
 <body>
   <img  src="images/a-group-of-friends-banner.jpg" alt="A Group of Friends" class="main-image">
 
-
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="guides/guide-landing.html">Guides</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-
+  <?php include $_SERVER['DOCUMENT_ROOT'].'/components/nav.php'; ?>
   
   <div class="text-box">
     A Group of Friends is a kinship on the Glamdring server for Lord of the Rings Online.<br><br>
