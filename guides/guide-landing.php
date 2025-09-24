@@ -20,7 +20,7 @@
       <img src="#" alt="Legendary Items">
       <h2>Legendary Items</h2>
       <p>Learn how the LI system works, reforging, and traceries.</p>
-      <a href="legendary-items/index.html" class="btn">Read More</a>
+      <a href="legendary-items/index.php" class="btn">Read More</a>
     </div>
     
     <div class="guide-card">
