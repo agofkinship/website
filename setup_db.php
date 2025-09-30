@@ -19,6 +19,11 @@ $queries = [
     user_id INT NOT NULL,
     title TEXT NOT NULL,
     content TEXT NOT NULL,
+    status ENUM(
+    'pending',
+    'approved',
+    'rejected')
+    DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)

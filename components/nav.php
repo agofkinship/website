@@ -10,6 +10,9 @@
         <?php else: ?>
           <a href="/accounts/login.php"><button>Login</button></a>
           <?php endif; ?>
+      <?php if (checklogin()): ?>
+        <li><a href="/../guides/submit.php">Submit Guide</a></li>
+        <?php endif; ?>
       <li><a href="/index.php">Home</a></li>
       <li><a href="/about.php">About</a></li>
       <li><a href="/guides/guide-landing.php">Guides</a></li>
