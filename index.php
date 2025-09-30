@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+< lang="en">
 <head>
   <meta charset="UTF-8">
   <title>A Group of Friends - A Kinship for Lord of the Rings Online</title>
@@ -8,6 +8,7 @@
     
   </style>
 </head>
+
 <body>
   <img  src="images/a-group-of-friends-banner.jpg" alt="A Group of Friends" class="main-image">
 
