@@ -1,39 +1,43 @@
-// add dom content loaded event listener
 document.addEventListener("DOMContentLoaded", () => {
 	console.log("DOM fully loaded and parsed");
 
-	// hamburger menu action
+	// select the main-nav only
+	const mainNav = document.querySelector(".main-nav");
+	if (mainNav) {
+		const hamburger = mainNav.querySelector(".hamburger");
+		const navLinks = mainNav.querySelector(".nav-links");
 
-	const hamburger = document.querySelector(".hamburger");
-	const navLinks = document.querySelector(".nav-links");
+		hamburger.addEventListener("click", (e) => {
+			navLinks.classList.toggle("active");
+			e.stopPropagation();
+		});
 
-	hamburger.addEventListener("click", (e) => {
-		navLinks.classList.toggle("active");
-		e.stopPropagation(); // prevents menu from randomly closing
-	});
-
-	// close menu when clicking off menu
-	document.addEventListener("click", (e) => {
-		if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-			navLinks.classList.remove("active");
-		}
-	});
+		// close menu when clicking outside
+		document.addEventListener("click", (e) => {
+			if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+				navLinks.classList.remove("active");
+			}
+		});
+	}
 
 	// back to top button
-
+	const backToTopButton = document.getElementById("back-to-top");
 	window.addEventListener("scroll", () => {
-		const backToTopButton = document.getElementById("back-to-top");
-		if (window.scrollY > 100) {
-			backToTopButton.style.display = "block";
-		} else {
-			backToTopButton.style.display = "none";
+		if (backToTopButton) {
+			if (window.scrollY > 100) {
+				backToTopButton.style.display = "block";
+			} else {
+				backToTopButton.style.display = "none";
+			}
 		}
+	});
 
+	if (backToTopButton) {
 		backToTopButton.addEventListener("click", () => {
 			window.scrollTo({
 				top: 0,
 				behavior: "smooth",
 			});
 		});
-	});
+	}
 });

@@ -1,5 +1,5 @@
 <?php 
-require 'auth.php';
+require_once 'auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);

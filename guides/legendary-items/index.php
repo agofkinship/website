@@ -1,3 +1,7 @@
+<?php 
+require __DIR__ . "/../../accounts/auth.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,7 @@
 </head>
 <body>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/components/nav.php'; ?>
+<?php include __DIR__.'/../../components/nav.php'; ?>
 
   <div class="text-box3">
     <div class="toc">

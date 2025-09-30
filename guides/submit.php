@@ -23,12 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<?php include __DIR__ . '/../components/nav.php'; ?>
+
 <h2>Submit a Guide</h2>
-<?php if (isset($errorq)) echo "<p style='color:red;'>$error</p>"; ?>
+<?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 <?php if (isset($success)) echo "<p style='color:green;'>$success</p>"; ?>
 
 <form method="POST">
-    <input type="text" name="title" placeholder="Guide Title" required>
+    <input type="text" name="title" placeholder="Guide Title" required><br><br>
     <textarea name="content" rows="8" placeholder="Write your guide here..." required></textarea><br><br>
     <button type="submit">Submit Guide</button>
 </form>
