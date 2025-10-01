@@ -27,7 +27,7 @@ $config->set("HTML.AllowedAttributes", [
 ]);
 
 // Allow all CSS properties Summernote may use
-$config->set("CSS.AllowedProperties", null); // null = all properties allowed
+$config->set("CSS.AllowedProperties", null);
 
 $config->set("URI.AllowedSchemes", [
     "http" => true,
@@ -36,7 +36,6 @@ $config->set("URI.AllowedSchemes", [
 ]);
 
 $purifier = new HTMLPurifier($config);
-
 ?>
 
 <!DOCTYPE html>
@@ -44,30 +43,36 @@ $purifier = new HTMLPurifier($config);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending Guides</title>
+    <title>Pending Guides - Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
 <?php include __DIR__ . '/../components/nav.php'; ?>
 
-<div class="container mt-4">
-    <h1>Pending Guides</h1>
-    <?php foreach ($guides as $guide): ?>
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title"><?= htmlspecialchars($guide['title']) ?></h5>
-                <h6 class="card-subtitle mb-2 text-muted">By: <?= htmlspecialchars($guide['username']) ?></h6>
-                <div class="card-text">
-                    <?= $purifier->purify($guide['content']) ?>
+<main class="container my-5">
+    <h1 class="mb-4">Pending Guides</h1>
+
+    <?php if (!$guides): ?>
+        <div class="alert alert-info">No guides are currently pending review.</div>
+    <?php else: ?>
+        <?php foreach ($guides as $guide): ?>
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title"><?= htmlspecialchars($guide['title']) ?></h5>
+                    <h6 class="card-subtitle mb-3 text-muted">By: <?= htmlspecialchars($guide['username']) ?></h6>
+                    <div class="card-text mb-3">
+                        <?= $purifier->purify($guide['content']) ?>
+                    </div>
+                    <a href="review_action.php?id=<?= $guide['id'] ?>&action=approve" class="btn btn-success me-2">Approve</a>
+                    <a href="review_action.php?id=<?= $guide['id'] ?>&action=reject" class="btn btn-danger">Reject</a>
                 </div>
-                <a href="review_action.php?id=<?= $guide['id'] ?>&action=approve" class="btn btn-success mt-2">Approve</a>
-                <a href="review_action.php?id=<?= $guide['id'] ?>&action=reject" class="btn btn-danger mt-2">Reject</a>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</main>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
