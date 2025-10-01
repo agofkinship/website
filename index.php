@@ -1,8 +1,9 @@
-<?php 
+<?php
 require __DIR__ . "/accounts/auth.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@ require __DIR__ . "/accounts/auth.php";
   <!-- Theme CSS -->
   <link rel="stylesheet" href="theme.css">
 </head>
+
 <body>
 
   <?php include __DIR__ . '/components/nav.php'; ?>
@@ -24,15 +26,19 @@ require __DIR__ . "/accounts/auth.php";
   <main class="container mt-4">
     <section class="intro mb-5">
       <p>A Group of Friends is a kinship on the Glamdring server for Lord of the Rings Online.</p>
-      <p>We created it as a place to hang out without feeling pressured to do certain things or behave in a certain way. We function much like a group of friends in real life!</p>
+      <p>We created it as a place to hang out without feeling pressured to do certain things or behave in a certain way.
+        We function much like a group of friends in real life!</p>
     </section>
 
     <section class="unique mb-5">
       <h2 class="header-text mb-3">What Makes Us Unique</h2>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">We play our own way, at our own pace, with no pressure to join group events or raids.</li>
-        <li class="list-group-item">We don't have a leader - instead a committee shares the responsibility of keeping things running.</li>
-        <li class="list-group-item">We treat each other as real friends would: we have fun, respect boundaries, accept our differences, avoid drama and ensure that everyone feels included.</li>
+        <li class="list-group-item">We play our own way, at our own pace, with no pressure to join group events or
+          raids.</li>
+        <li class="list-group-item">We don't have a leader - instead a committee shares the responsibility of keeping
+          things running.</li>
+        <li class="list-group-item">We treat each other as real friends would: we have fun, respect boundaries, accept
+          our differences, avoid drama and ensure that everyone feels included.</li>
         <li class="list-group-item">Everyone is welcome to chip in and contribute to the kinship.</li>
       </ul>
     </section>
@@ -41,7 +47,8 @@ require __DIR__ . "/accounts/auth.php";
       <a href="https://discord.agof.us" target="_blank">
         <img src="images/discord-logo.png" alt="Join us on Discord" class="linked-image mb-2">
       </a>
-      <p class="mb-0">Join us on Discord! Guests are welcome and there is no obligation to join the kinship. Feel free to chat or just look around!</p>
+      <p class="mb-0">Join us on Discord! Guests are welcome and there is no obligation to join the kinship. Feel free
+        to chat or just look around!</p>
     </section>
 
     <button id="back-to-top" class="btn btn-secondary">Back to Top</button>
@@ -50,10 +57,6 @@ require __DIR__ . "/accounts/auth.php";
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-  <script>
-    // Back to Top functionality
-    const backBtn = document.getElementById('back-to-top');
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  </script>
 </body>
+
 </html>

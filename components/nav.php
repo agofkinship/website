@@ -11,8 +11,6 @@
         <li class="nav-item"><a class="nav-link" href="/index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/about.php">About</a></li>
         <li class="nav-item"><a class="nav-link" href="/guides/guide-landing.php">Guides</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
 
         <?php $userId = checklogin(); ?>
         <?php if ($userId): ?>

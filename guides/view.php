@@ -65,11 +65,17 @@ $cleanContent = $purifier->purify($guide["content"]);
         </div>
         <a href="guide-landing.php" class="btn btn-secondary mt-4">Back to Guides</a>
     </div>
+     <button id="back-to-top" class="btn btn-secondary">Back to Top</button>
 </main>
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Back to Top functionality
+    const backBtn = document.getElementById('back-to-top');
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 <script src="/script.js"></script>
 
 </body>

@@ -4,14 +4,15 @@ require_once 'auth.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
+    $confirmPassword = trim($_POST['confirm_password']);
     $email = trim($_POST['email']);
 
     if (!$username || !$password || !$email) {
         $error = 'All fields required';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Invalid email address';
-    } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W]).{8,}$/', $password)) {
-        $error = "Password must be 8+ characters, with uppercase, lowercase, number, and special character.";
+    } elseif ($password !== $confirmPassword) {
+        $error = 'Passwords must match';
     } else {
         // Check if email already exists
         $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
@@ -68,9 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
             <input type="password" id="password" name="password" class="form-control" required>
-            <small class="text-muted">
-                Must be 8+ characters, with uppercase, lowercase, number, and special character.
-            </small>
+        </div>
+
+        <div class="mb-3">
+            <label for="confirm-password" class="form-label">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control"required>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Sign Up</button>
