@@ -20,35 +20,39 @@ if (!in_array($user['role'], ['officer', 'committee', 'member'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <?php include __DIR__ . '/../components/nav.php'; ?>
 
-<h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>!</h1>
+    <h1>Welcome, <?php echo htmlspecialchars($user['username']); ?>!</h1>
 
-<nav class="dashboard-nav">
-    <ul>
-        <li><a href="index.php">Dashboard Home</a></li>
-        <?php if (hasRole('member') || hasRole('officer') || hasRole('committee')): ?>
-            <li><a href="/../guides/submit.php">Submit Guide</a></li>
-        <?php endif; ?>
-        <?php if (hasRole('officer') || hasRole('committee')): ?>
-            <li><a href="review_guides.php">Review Guides</a></li>
-        <?php endif; ?>
-        <?php if (hasRole('committee')): ?>
-            <li><a href="user_management.php">User Management</a></li>
-        <?php endif; ?>
-    </ul>
-</nav>
+    <nav class="dashboard-nav">
+        <ul>
+            <li><a href="index.php">Dashboard Home</a></li>
+            <?php if (hasRole('member') || hasRole('officer') || hasRole('committee')): ?>
+                <li><a href="/../guides/submit.php">Submit Guide</a></li>
+            <?php endif; ?>
+            <?php if (hasRole('officer') || hasRole('committee')): ?>
+                <li><a href="review_guides.php">Review Guides</a></li>
+            <?php endif; ?>
+            <?php if (hasRole('committee')): ?>
+                <li><a href="user_management.php">User Management</a></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
 
-<section>
-    <p>Use the navigation above to access your dashboard features.</p>
-</section>
+    <section>
+        <p>Use the navigation above to access your dashboard features.</p>
+    </section>
 
 </body>
+
 </html>

@@ -9,7 +9,7 @@ $dotenv->load();
     $user = $_ENV["DB_USER"];
     $pass = $_ENV["DB_PASS"];
     $name = $_ENV["DB_NAME"];
-    $charset = 'utf8mb4';
+    $charset = 'latin1';
 
 $dsn = "mysql:host=$host;dbname=$name;charset=$charset";
 $options = [

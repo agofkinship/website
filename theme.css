@@ -1,0 +1,44 @@
+/* General body and font */
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    background-color: #f5f0e6;
+    color: #2e2b2a;
+}
+
+/* Main banner image */
+.main-image {
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Section headers */
+.header-text {
+    font-family: "Cinzel", serif;
+    color: #5c3a21;
+}
+
+/* Discord section styling */
+.discord {
+    background-color: #ece2d0;
+    border: 2px solid #5c3a21;
+}
+
+.discord .linked-image {
+    max-width: 120px;
+}
+
+/* Back to Top button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* List group styling for unique section */
+.list-group-item {
+    background-color: #fff8f0;
+    border-color: #d9cbbf;
+    margin-bottom: 5px;
+}

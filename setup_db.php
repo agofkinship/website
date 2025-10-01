@@ -36,6 +36,14 @@ $queries = [
     expires_at DATETIME NOT NULL,
     FOREIGN KEY (users_id) REFERENCES users(id)
     );",
+    "CREATE TABLE IF NOT EXISTS guide_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    guide_id INT NOT NULL,
+    filename VARCHAR(255) NOT NULL,
+    data LONGBLOB NOT NULL,
+    mime_type VARCHAR(255) NOT NULL,
+    FOREIGN KEY (guide_id) REFERENCES guides(id) ON DELETE CASCADE
+    );",
 ];
 
 foreach ($queries as $query) { 

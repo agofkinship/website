@@ -1,56 +1,70 @@
-<?php 
+<?php
 require __DIR__ . "/../accounts/auth.php";
+require __DIR__ . "/../vendor/autoload.php";
+
+// HTMLPurifier setup
+$config = HTMLPurifier_Config::createDefault();
+$config->set("HTML.Allowed", "p,b,strong,i,em,u,a[href],ul,ol,li,br,img[src|alt|width|height]");
+$purifier = new HTMLPurifier($config);
+
+// Fetch approved guides
+$stmt = $pdo->query("SELECT g.id, g.title, g.content, u.username
+FROM guides g
+JOIN users u ON g.user_id = u.id
+WHERE g.status = 'approved'
+ORDER BY g.id DESC");
+$approvedGuides = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="landing.css">
-    <link rel="stylesheet" href="../style.css">
-    <title>Guides by Kinship</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides by Kinship</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
 
-<?php include __DIR__ . '/../components/nav.php'; ?>
+  <?php include __DIR__ . '/../components/nav.php'; ?>
 
-    <div class="guides-landing">
-  <h1 class="header-text">Kinship Guides</h1>
-  <p class="sub-header-text">Welcome to our library of guides. Choose a topic below to get started!</p>
-  
-  <div class="guides-grid">
-    <div class="guide-card">
-      <img src="#" alt="Legendary Items">
-      <h2>Legendary Items</h2>
-      <p>Learn how the LI system works, reforging, and traceries.</p>
-      <a href="legendary-items/index.php" class="btn">Read More</a>
-    </div>
-    
-    <div class="guide-card">
-      <img src="#" alt="Crafting">
-      <h2>Crafting</h2>
-      <p>All about professions, resources, and how to maximize crafting.</p>
-      <a href="#" class="btn">Read More</a>
-    </div>
-    
-    <div class="guide-card">
-      <img src="#" alt="Leveling">
-      <h2>Leveling</h2>
-      <p>Tips and tricks for getting your character to cap at your own pace.</p>
-      <a href="#" class="btn">Read More</a>
+  <main class="container mt-5">
+    <div class="text-center mb-4">
+      <h1 class="header-text">Kinship Guides</h1>
+      <p class="sub-header-text">Welcome to our library of guides.</p>
     </div>
 
-    <div class="guide-card">
-        <img src="#" alt="Home decor">
-        <h2>Home Decoration</h2>
-        <p>Home Decorations and Where to Find Them</p>
-        <a href="#" class="btn">Read More</a>
-    </div>
-  </div>
-</div>
+    <?php if (!$approvedGuides): ?>
+      <div class="alert alert-info text-center">No guides have been approved yet.</div>
+    <?php else: ?>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <?php foreach ($approvedGuides as $guide): ?>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title"><?= htmlspecialchars($guide['title']) ?></h5>
+                <h6 class="card-subtitle mb-2 text-muted">By <?= htmlspecialchars($guide['username']) ?></h6>
+                <?php
+                  $snippet = substr(strip_tags($guide['content']), 0, 150) . '...';
+                ?>
+                <p class="card-text"><?= htmlspecialchars($snippet) ?></p>
+                <a href="view.php?id=<?= $guide['id'] ?>" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
+  </main>
 
-<script src="../script.js"></script>
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../script.js"></script>
 
 </body>
 </html>
